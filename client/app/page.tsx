@@ -1,6 +1,9 @@
+import Faqs from "@/components/Faqs";
 import Features from "@/components/Features";
+import Footer from "@/components/Footer";
 import Intro from "@/components/Intro";
 import MovingGrid from "@/components/MovingGrid";
+import PricingCard from "@/components/PricingCard";
 import Products from "@/components/Products";
 
 
@@ -11,6 +14,9 @@ export default function Home() {
          <MovingGrid />
          <Features />
          <Products />
+         <PricingCard />
+         <Faqs/>
+         <Footer />
       </div>
    );
 }

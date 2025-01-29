@@ -2,10 +2,17 @@
 import React, { useState } from 'react'
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { signIn, signOut, useSession } from "next-auth/react"
+
 
 
 
 const Header = () => {
+
+    //For authentication
+    const { data: session } = useSession();
+    const [logined, setLogined] = useState(false);
+    
 
 
     //For Services
@@ -20,9 +27,13 @@ const Header = () => {
         setMenuOpen(!menuOpen);
     }
 
+    const handlelogin = () => {
+        signIn('google');
+    }
+
 
     return (
-        <div className='fixed top-0 left-0 w-full bg-[#080611] bg-opacity-90 text-white p-5 z-50 flex flex-row items-center justify-between'>
+        <div className='fixed top-0 left-0 w-full bg-[#080611] bg-opacity-90 backdrop-blur-md text-white p-5 z-50 flex flex-row items-center justify-between'>
             <div className='flex justify-start items-center lg:pl-10 lg:gap-4 gap-2'>
                 <img className='h-7 w-7' src='logo.png' />
                 <p className='font-bold text-[#5340ff] text-2xl'>Verity</p>
@@ -44,7 +55,7 @@ const Header = () => {
                                 <div className="flex flex-col">
                                     <span className="text-base">Interview Prep Guide</span>
                                     <p className="text-xs text-gray-400">
-                                        Interview prep kit here, btw I'm myself unemployed so read at your own risk, Haha just kidding please read
+                                        Interview prep kit here, btw I'm myself unemployed so read at your own risk, HaHa just kidding please read
                                     </p>
                                 </div>
                             </div>
@@ -72,9 +83,23 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="font-semibold cursor-pointer hover:bg-purple-950 p-2 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-95 hover:-translate-y-1 shadow-md hover:shadow-lg">Jobs</div>
-                <div className="cursor-pointer hover:bg-slate-900 p-2 rounded-md">
-                    <img className="h-5 w-5" src="user.png" alt="User" />
-                </div>
+                {/* <div className="cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md"> */}
+                    {
+                        session ? (
+                            <div className='cursor-pointer hover:bg-slate-900 p-2 rounded-md flex flex-row gap-2'>
+                                {/* User is already logged in */}
+                                <img className="h-5 w-5" src="user.png" alt="User" />
+                                <p className='text-center'>{session.user?.name}</p>
+                            </div>
+                        ) : (
+                            <div className='cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md'>
+                                {/* User is not logged in */}
+                                <button onClick={() => handlelogin()} className=' px-4 w-full h-full flex items-center justify-center rounded-lg'>login</button>
+                            </div>
+                        )
+                    }
+
+                {/* </div> */}
             </div>
 
 
