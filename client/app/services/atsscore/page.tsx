@@ -1,87 +1,88 @@
-'use client';
-import React, { useState } from 'react'
+// app/services/atsscore/page.tsx
+'use client'
+import { useState } from 'react'
 
-const page = () => {
-   const [file, setFile] = useState(null);
-   const [error, setError] = useState('');
+export default function ATSScore() {
+   const [file, setFile] = useState<File | null>(null)
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState<string | null>(null)
 
-   const handleFileChange = (e) => {
-      const selectedFile = e.target.files[0];
-      if (selectedFile && selectedFile.type === 'application/pdf') {
-         setFile(selectedFile);
-         setError('');
-      } else {
-         setFile(null);
-         setError('Please upload a valid PDF file.');
+   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const uploadedFile = e.target.files?.[0]
+      if (uploadedFile) {
+         setFile(uploadedFile)
       }
-   };
+   }
 
-   const handleSubmit = async (e) => {
-      e.preventDefault();
-      if (!file) {
-         setError('Please upload a PDF file.');
-         return;
-      }
+   const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      if (!file) return
 
-      const formData = new FormData();
-      formData.append('file', file);
+      setLoading(true)
+      setError(null)
+
+      const formData = new FormData()
+      formData.append('file', file)
 
       try {
-         const response = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData,
-         });
+         const response = await fetch(
+            'http://localhost:3001/api/v1/scorer',
+            {
+               method: 'POST',
+               credentials: 'include',
+               body: formData,
+               headers: {
+                  // Don't set Content-Type header when sending FormData
+                  // The browser will set it automatically with the correct boundary
+                  'Accept': 'application/json',
+               },
+               mode: 'cors', // Explicitly set CORS mode
+            }
+         )
 
-         if (response.ok) {
-            alert('File uploaded successfully!');
-         } else {
-            alert('File upload failed.');
+         if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
          }
-      } catch (error) {
-         console.error('Error uploading file:', error);
-         alert('Error uploading file.');
+
+         const data = await response.json()
+         console.log('Upload successful:', data)
+      } catch (err) {
+         console.error('Upload error:', err)
+         setError(err instanceof Error ? err.message : 'Upload failed')
+      } finally {
+         setLoading(false)
       }
-   };
+   }
+
    return (
-      <div className='mt-[72px]'>
-         {/* Upload wala section */}
-         <div className='flex flex-row justify-between mt-40'>
-            <div className="relative ml-20 p-10">
-               <h2>ATS Scorer</h2>
-               <h1>Is your resume good enough?</h1>
-               <p>A free and fast AI resume checker doing 16 crucial checks to ensure your resume is ready to perform and get you interview callbacks.</p>
-               {/* The resume uploader container */}
-               <div className='relative p-5 bg-gray-200 shadow-lg w-64 h-48 overflow-hidden'>
-                  <div className='relative w-full h-full bg-white border-2 border-dashed border-black'>
-                     <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-                        <form onSubmit={handleSubmit}>
-                           <div className="mb-4">
-                              <label className="block text-sm font-medium text-gray-700">Upload PDF</label>
-                              <input
-                                 type="file"
-                                 accept="application/pdf"
-                                 onChange={handleFileChange}
-                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                              />
-                              {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-                           </div>
-                           <button
-                              type="submit"
-                              className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                           >
-                              Upload
-                           </button>
-                        </form>
-                     </div>
-                  </div>
-               </div>
+      <div className="max-w-xl mt-[72px] mx-auto p-6 border border-gray-300 rounded-lg">
+
+         <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="border-2 border-dashed border-gray-300 p-6 rounded-lg">
+               <input
+                  type="file"
+                  onChange={handleFileUpload}
+                  className="w-full"
+                  accept=".pdf,.doc,.docx"
+               />
             </div>
-            <div>
-               <img className='h-96 w-96' src='/images/prod1.webp' />
-            </div>
-         </div>
+            
+
+            <button
+               type="submit"
+               disabled={!file || loading}
+               className={`w-full py-2 px-4 rounded ${loading
+                  ? 'bg-gray-400'
+                  : 'bg-blue-500 hover:bg-blue-600'
+                  } text-white`}
+            >
+               {loading ? 'Uploading...' : 'Upload Resume'}
+            </button>
+
+            {error && (
+               <div className="text-red-500 text-sm mt-2">{error}</div>
+            )}
+         </form>
       </div>
    )
 }
-
-export default page

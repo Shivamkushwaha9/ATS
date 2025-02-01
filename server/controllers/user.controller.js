@@ -1,3 +1,44 @@
+// controllers/user.controller.js
+export const scorer = async (req, res) => {
+    console.log('Scorer endpoint hit')
+    try {
+        console.log('Request file:', req.file)
+        console.log('Request body:', req.body)
+
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "No file uploaded"
+            });
+        }
+
+        // File information is available in req.file
+        const fileInfo = {
+            filename: req.file.filename,
+            path: req.file.path,
+            mimetype: req.file.mimetype
+        };
+
+        console.log('File info:', fileInfo)
+
+        res.status(200).json({
+            success: true,
+            message: "File uploaded successfully",
+            fileInfo
+        });
+
+    } catch (error) {
+        console.error(`Some error occurred while scoring:`, error);
+        res.status(500).json({
+            success: false,
+            message: "Error processing file"
+        });
+    }
+};
+
+
+
+
 import { User } from "../models/user.model.js";
 // import bcryptjs from "bcrypt"
 import bcrypt from "bcrypt";
@@ -10,7 +51,7 @@ export const signup = async (req, res) => {
         if (!username || !email || !password) {
             throw new Error("All fields required while signup");
         }
-        const checkIfUserExists = await User.findOne({email});
+        const checkIfUserExists = await User.findOne({ email });
         if (checkIfUserExists) {
             res.status(400).json({ success: false, message: "User Already Exists" });
         }
@@ -41,7 +82,7 @@ export const login = async (req, res) => {
         if (!email || !password) {
             return res.status(400).json({ success: false, message: "All fields required." });
         }
-        let existingUser = await User.findOne({email});
+        let existingUser = await User.findOne({ email });
 
         if (!existingUser) {
             return res.status(400).json({ success: false, message: "WRong Email or password, or pls signup first" });
@@ -87,10 +128,3 @@ export const logout = (_, res) => {
     }
 };
 
-export const scorer =  () => {
-    try {
-        
-    } catch (error) {
-        console.log(`Some error occurred while scoring ${error}`)
-    }
-}

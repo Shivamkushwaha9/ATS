@@ -3,6 +3,7 @@ import Features from "@/components/landingpage/Features";
 import Footer from "@/components/landingpage/Footer";
 import Intro from "@/components/landingpage/Intro";
 import MovingGrid from "@/components/landingpage/MovingGrid";
+// import MovingGrid from "@/components/MovingGrid";
 import PricingCard from "@/components/landingpage/PricingCard";
 import Products from "@/components/landingpage/Products";
 
