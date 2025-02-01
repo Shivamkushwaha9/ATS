@@ -86,3 +86,11 @@ export const logout = (_, res) => {
         console.log(error);
     }
 };
+
+export const scorer =  () => {
+    try {
+        
+    } catch (error) {
+        console.log(`Some error occurred while scoring ${error}`)
+    }
+}

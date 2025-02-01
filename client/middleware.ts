@@ -9,5 +9,6 @@ export const config = {
     "/services/:path*",
     "/jobs/:path*",
     // add other protected routes here
+    "/((?!api|_next/static|_next/image|favicon.ico|images|assets).*)",
   ]
 }

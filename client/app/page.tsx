@@ -1,10 +1,10 @@
-import Faqs from "@/components/Faqs";
-import Features from "@/components/Features";
-import Footer from "@/components/Footer";
-import Intro from "@/components/Intro";
-import MovingGrid from "@/components/MovingGrid";
-import PricingCard from "@/components/PricingCard";
-import Products from "@/components/Products";
+import Faqs from "@/components/landingpage/Faqs";
+import Features from "@/components/landingpage/Features";
+import Footer from "@/components/landingpage/Footer";
+import Intro from "@/components/landingpage/Intro";
+import MovingGrid from "@/components/landingpage/MovingGrid";
+import PricingCard from "@/components/landingpage/PricingCard";
+import Products from "@/components/landingpage/Products";
 
 
 export default function Home() {
@@ -15,8 +15,11 @@ export default function Home() {
          <Features />
          <Products />
          <PricingCard />
-         <Faqs/>
+         <Faqs />
          <Footer />
+         <div className="bg-[#090909] flex items-center justify-center text-sm text-gray-300 py-20">
+            © Copyright 2025 Verity, Inc. All Rights Reserved
+         </div>
       </div>
    );
 }

@@ -1,0 +1,12 @@
+1. Opening an External Link
+    For external links, use a normal <a> tag or window.location.href:
+
+    <button onClick={() => window.location.href = 'https://example.com'}>
+      Go to External Site
+    </button>
+
+
+2.  If wrapping a div, use passHref:
+    <Link href="/about" passHref>
+      <div style={{ cursor: 'pointer', color: 'blue' }}>Go to About Page</div>
+    </Link>

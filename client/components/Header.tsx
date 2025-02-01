@@ -1,8 +1,10 @@
 'use client';
 import React, { useState } from 'react'
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaUser, FaTimes } from 'react-icons/fa';
 import { signIn, signOut, useSession } from "next-auth/react"
+import Link from 'next/link';
+import Image from 'next/image';
 
 
 
@@ -12,7 +14,7 @@ const Header = () => {
     //For authentication
     const { data: session } = useSession();
     const [logined, setLogined] = useState(false);
-    
+
 
 
     //For Services
@@ -34,10 +36,12 @@ const Header = () => {
 
     return (
         <div className='fixed top-0 left-0 w-full bg-[#080611] bg-opacity-90 backdrop-blur-md text-white p-5 z-50 flex flex-row items-center justify-between'>
-            <div className='flex justify-start items-center lg:pl-10 lg:gap-4 gap-2'>
-                <img className='h-7 w-7' src='logo.png' />
-                <p className='font-bold text-[#5340ff] text-2xl'>Verity</p>
-            </div>
+            <Link href='/'>
+                <div className='flex justify-start items-center lg:pl-10 lg:gap-4 gap-2 cursor-pointer'>
+                    <img className='h-7 w-7' src='/images/logo.png' />
+                    <p className='font-bold text-[#5340ff] text-2xl'>Verity</p>
+                </div>
+            </Link>
 
             <div className="hidden lg:flex flex-row gap-20 pr-10 justify-around">
                 <div className="font-semibold cursor-pointer hover:bg-purple-950 p-2 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
@@ -50,54 +54,60 @@ const Header = () => {
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-[#080611] border border-[#5340ff] rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"> {/* Dropdown box */}
                         <div className="flex flex-row p-4 gap-4">
                             {/* Section 1 */}
-                            <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
-                                <img className="h-5 w-5" src="interview.svg" alt="Interview" />
-                                <div className="flex flex-col">
-                                    <span className="text-base">Interview Prep Guide</span>
-                                    <p className="text-xs text-gray-400">
-                                        Interview prep kit here, btw I'm myself unemployed so read at your own risk, HaHa just kidding please read
-                                    </p>
+                            <Link href='/services/prepguide'>
+                                <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                                    <img className="h-5 w-5" src="/images/interview.svg" alt="Interview" />
+                                    <div className="flex flex-col">
+                                        <span className="text-base">Interview Prep Guide</span>
+                                        <p className="text-xs text-gray-400">
+                                            Interview prep kit here, btw I'm myself unemployed so read at your own risk, HaHa just kidding please read
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             {/* Section 2 */}
-                            <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
-                                <img className="h-5 w-5" src="samples.svg" alt="ATS Score" />
-                                <div className="flex flex-col">
-                                    <span className="text-base">ATS Score</span>
-                                    <p className="text-xs text-gray-400">
-                                        This is currently unavailable. Nonetheless, I am planning to just make a Gpt wrapper here lol
-                                    </p>
+                            <Link href='/services/atsscore'>
+                                <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                                    <img className="h-5 w-5" src="/images/samples.svg" alt="ATS Score" />
+                                    <div className="flex flex-col">
+                                        <span className="text-base">ATS Score</span>
+                                        <p className="text-xs text-gray-400">
+                                            This is currently unavailable. Nonetheless, I am planning to just make a Gpt wrapper here lol
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* Section 3 */}
-                            <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-95 hover:-translate-y-1 shadow-md hover:shadow-lg">
-                                <img className="h-5 w-5" src="score.svg" alt="Resume Templates" />
-                                <div className="flex flex-col">
-                                    <span className="text-base">Resume Templates</span>
-                                    <p className="text-xs text-gray-400">
-                                        Oh yes this is reliable since I personally have selected few most used resumes. If you get job, Please refer me!!
-                                    </p>
+                            </Link>
+                            <Link href='/services/resumetemplates'>
+                                {/* Section 3 */}
+                                <div className="flex flex-row items-center gap-3 justify-center transition-all duration-300 ease-in-out transform hover:scale-95 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                                    <img className="h-5 w-5" src="/images/score.svg" alt="Resume Templates" />
+                                    <div className="flex flex-col">
+                                        <span className="text-base">Resume Templates</span>
+                                        <p className="text-xs text-gray-400">
+                                            Oh yes this is reliable since I personally have selected few most used resumes. If you get job, Please refer me!!
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <div className="font-semibold cursor-pointer hover:bg-purple-950 p-2 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-95 hover:-translate-y-1 shadow-md hover:shadow-lg">Jobs</div>
                 {/* <div className="cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md"> */}
-                    {
-                        session ? (
-                            <div className='cursor-pointer hover:bg-slate-900 p-2 rounded-md flex flex-row gap-2'>
-                                {/* User is already logged in */}
-                                <img className="h-5 w-5" src="user.png" alt="User" />
-                                <p className='text-center'>{session.user?.name}</p>
-                            </div>
-                        ) : (
-                            <div className='cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md'>
-                                {/* User is not logged in */}
-                                <button onClick={() => handlelogin()} className=' px-4 w-full h-full flex items-center justify-center rounded-lg'>login</button>
-                            </div>
-                        )
-                    }
+                {
+                    session ? (
+                        <div className='cursor-pointer hover:bg-slate-900 p-2 rounded-md flex flex-row gap-2'>
+                            {/* User is already logged in */}
+                            <img className="h-5 w-5" src="/images/user.png" alt="User" />
+                            <p className='text-center'>{session.user?.name}</p>
+                        </div>
+                    ) : (
+                        <div className='cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md'>
+                            {/* User is not logged in */}
+                            <button onClick={() => handlelogin()} className=' px-4 w-full h-full flex items-center justify-center rounded-lg'>login</button>
+                        </div>
+                    )
+                }
 
                 {/* </div> */}
             </div>
@@ -162,7 +172,12 @@ const Header = () => {
                     <div className="font-semibold cursor-pointer border-b border-gray-400">Jobs</div>
                     <div className='flex flex-row gap-3 items-center'>
                         <p className='hover:bg-white'>Profile</p>
-                        <img className="h-5 w-5" src="user.png" alt="user" />
+                        <Image
+                            src="public/images/user.png"
+                            alt="user"
+                            width={20}
+                            height={20}
+                        />
                     </div>
                 </div>
             )}
