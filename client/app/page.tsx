@@ -18,9 +18,7 @@ export default function Home() {
          <PricingCard />
          <Faqs />
          <Footer />
-         <div className="bg-[#090909] flex items-center justify-center text-sm text-gray-300 py-20">
-            © Copyright 2025 Verity, Inc. All Rights Reserved
-         </div>
+         
       </div>
    );
 }

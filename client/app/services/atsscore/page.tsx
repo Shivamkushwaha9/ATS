@@ -66,7 +66,10 @@ export default function ATSScore() {
                   accept=".pdf,.doc,.docx"
                />
             </div>
-            
+            <p>
+               s
+            </p>
+
 
             <button
                type="submit"

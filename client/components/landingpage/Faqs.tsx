@@ -8,7 +8,7 @@ const Faqs = () => {
         answers: [
             "This is one of my coolest projects. Check it out and give me feedback kindly.",
             "I'm a dreamer, who dreams of PRETTY BIG THINGS.",
-            "I used ChatGPT, F*** Everything, F*** you.",
+            "Well I used pretty much gen ai and computer vision models and many more thingss here and there!!",
             "Minus We prioritize the security and safety of your funds. As a non-custodial platform, we do not directly handle or store your funds. Your funds remain in your brokerage account or exchange wallet, ensuring that you maintain full control and ownership over your assets.",
             "Where are my funds stored when using your platform?"
         ]
@@ -21,7 +21,7 @@ const Faqs = () => {
     };
 
     return (
-        <div className='flex flex-col bg-[#090909] items-center justify-center'>
+        <div className='flex flex-col bg-gradient-to-b from-[#05356A] to-[#1b1f32] items-center justify-center'>
             <h1 className='text-center text-4xl lg:text-6xl my-10 font-bold'>
                 Frequently Asked Questions
             </h1>

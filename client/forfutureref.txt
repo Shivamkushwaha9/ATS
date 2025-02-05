@@ -10,3 +10,6 @@
     <Link href="/about" passHref>
       <div style={{ cursor: 'pointer', color: 'blue' }}>Go to About Page</div>
     </Link>
+
+
+3.

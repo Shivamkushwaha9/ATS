@@ -25,7 +25,7 @@ const Features = () => {
               <div className="flex flex-row gap-3 items-center">
                 <img
                   className="h-12 w-12 rounded-full"
-                  src="compute.webp"
+                  src="/images/compute.webp"
                   alt="Compute"
                 />
                 <h1 className="text-3xl font-semibold text-white">Compute</h1>
@@ -45,7 +45,7 @@ const Features = () => {
               <div className="flex flex-row gap-3 items-center">
                 <img
                   className="h-12 w-12 rounded-full"
-                  src="research.webp"
+                  src="/images/research.webp"
                   alt="Research"
                 />
                 <h1 className="text-3xl font-semibold text-white">Research</h1>
@@ -68,7 +68,7 @@ const Features = () => {
               <div className="flex flex-row gap-3 items-center">
                 <img
                   className="h-12 w-12 rounded-full"
-                  src="data.webp"
+                  src="/images/data.webp"
                   alt="Data"
                 />
                 <h1 className="text-3xl font-semibold text-white">Data</h1>
@@ -88,7 +88,7 @@ const Features = () => {
               <div className="flex flex-row gap-3 items-center">
                 <img
                   className="h-12 w-12 rounded-full"
-                  src="infra.webp"
+                  src="/images/infra.webp"
                   alt="Infra"
                 />
                 <h1 className="text-3xl font-semibold text-white">Infra</h1>
