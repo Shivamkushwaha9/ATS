@@ -53,7 +53,7 @@ const Page = () => {
          name,
          icon: data.icon[index],
          link: data.link[index]
-      })).filter(item => 
+      })).filter(item =>
          item.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
       setFilteredData(filtered)
@@ -79,7 +79,7 @@ const Page = () => {
       <div className='mt-[72px]'>
          <div className="relative w-full h-[250px] md:h-[300px]">
             <img
-               className='h-full w-full object-cover'
+               className='h-full w-full object-cover bg-[#DBEAFE]'
                src='/images/resumecoverimgmob.png'
                alt="Resume cover"
             />
@@ -140,7 +140,7 @@ const Page = () => {
                               {item.name}
                            </h3>
 
-                           <button 
+                           <button
                               onClick={() => handleDownload(item.link, item.name)}
                               className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group"
                            >
@@ -165,37 +165,34 @@ const Page = () => {
                      <button
                         onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
-                        className={`px-4 py-2 rounded-lg ${
-                           currentPage === 1 
-                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                        className={`px-4 py-2 rounded-lg ${currentPage === 1
+                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                               : 'bg-blue-500 text-white hover:bg-blue-600'
-                        }`}
+                           }`}
                      >
                         Previous
                      </button>
-                     
+
                      {[...Array(totalPages)].map((_, i) => (
                         <button
                            key={i}
                            onClick={() => setCurrentPage(i + 1)}
-                           className={`w-10 h-10 rounded-lg ${
-                              currentPage === i + 1
+                           className={`w-10 h-10 rounded-lg ${currentPage === i + 1
                                  ? 'bg-blue-500 text-white'
                                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                           }`}
+                              }`}
                         >
                            {i + 1}
                         </button>
                      ))}
-                     
+
                      <button
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                         disabled={currentPage === totalPages}
-                        className={`px-4 py-2 rounded-lg ${
-                           currentPage === totalPages 
-                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                        className={`px-4 py-2 rounded-lg ${currentPage === totalPages
+                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                               : 'bg-blue-500 text-white hover:bg-blue-600'
-                        }`}
+                           }`}
                      >
                         Next
                      </button>
