@@ -43,8 +43,8 @@ const Header = () => {
         const handleClickOutside = (event: MouseEvent) => {
             // Check if the click is outside the menu and menu button
             if (
-                menuRef.current && 
-                !menuRef.current.contains(event.target as Node) && 
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node) &&
                 !(event.target as HTMLElement).closest('button[aria-label="menu-toggle"]')
             ) {
                 setMenuOpen(false);
@@ -96,7 +96,9 @@ const Header = () => {
 
             <div className="hidden lg:flex flex-row gap-20 pr-10 justify-around">
                 <div className="font-semibold cursor-pointer hover:bg-[#2f2f4d] p-2 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg">
+                    <Link href='/interview'>
                     Interview
+                    </Link>
                 </div>
 
                 <div className="font-semibold cursor-pointer relative group">
@@ -130,10 +132,12 @@ const Header = () => {
                 </Link>
                 {
                     status === 'authenticated' ? (
-                        <div className='cursor-pointer p-1 rounded-md flex flex-row gap-2 p-2'>
-                            <img className="h-7 w-7 rounded-full hover:bg-[#8296F3]" src="/images/user.png" alt="User" />
-                            <p className='hover:bg-[#8296F3] rounded-sm px-1 text-center'>{session.user?.name}</p>
-                        </div>
+                        <Link href='/profile'>
+                            <div className='cursor-pointer rounded-md flex flex-row gap-2 p-2'>
+                                <img className="h-7 w-7 rounded-full hover:bg-[#8296F3]" src="/images/user.png" alt="User" />
+                                <p className='hover:bg-[#8296F3] rounded-sm px-1 text-center'>{session.user?.name}</p>
+                            </div>
+                        </Link>
                     ) : (
                         <div className='cursor-pointer hover:bg-slate-900 bg-[#5340FF] p-2 rounded-md'>
                             <button onClick={() => handlelogin()} className=' px-4 w-full h-full flex items-center justify-center rounded-lg'>
@@ -153,18 +157,20 @@ const Header = () => {
                 {menuOpen ? (<FaTimes className='text-white text-xl m-3' />) : (<FaBars className='text-white text-xl m-3' />)}
             </button>
             {menuOpen && (
-                <div 
+                <div
                     ref={menuRef}
                     className="absolute top-full left-0 w-full bg-[#080611] flex flex-col items-start px-10 gap-4 py-5 space-y-7 text-2xl lg:hidden"
                 >
+                    <Link href='/interview'>
                     <div className="font-semibold cursor-pointer border-b border-gray-400">Interview </div>
+                    </Link>
 
                     <div className="font-semibold cursor-pointer">
                         <div onClick={toggleServices} className='flex flex-row w-[70vw] justify-between'>
                             <span className='border-b border-gray-400'>Services</span>
                             {ServicesOpen ? (<FaChevronDown className="ml-2 inline-block text-lg" />) : (<FaChevronRight className="ml-2 inline-block text-lg" />)}
                         </div>
-
+                        
                         {ServicesOpen && (
                             <div>
                                 {

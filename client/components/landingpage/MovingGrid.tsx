@@ -34,10 +34,10 @@ const MovingGrid = () => {
 
     return (
         <div className="w-full overflow-hidden py-4 md:py-8 text-white bg-[#000]">
-            <h1 className="lg:text-3xl text-2xl font-semibold flex items-center justify-center lg:pt-7 pt-2">
+            <h1 className="lg:text-4xl text-2xl font-semibold flex items-center justify-center lg:pt-7 pt-2">
                 Get interview ready across&nbsp;
             </h1>
-            <p className="lg:text-3xl text-2xl font-semibold text-center bg-gradient-to-r from-[#91f3a6] to-[#f72af7] bg-clip-text text-transparent mb-5">
+            <p className="lg:text-4xl text-2xl font-semibold text-center bg-gradient-to-r from-[#39D353] to-[#f9f9f9] bg-clip-text text-transparent mb-5">
                 various domains
             </p>
             <div

@@ -86,7 +86,6 @@ export default function ATSScore() {
 
    return (
       <div className='mt-[72px]'>
-
          <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
             <Card className="w-full max-w-md shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                <CardHeader className="text-center">

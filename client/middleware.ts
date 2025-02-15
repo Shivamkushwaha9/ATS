@@ -11,6 +11,8 @@ export const config = {
     // "/leaderboard/:path*",
     // "/services/:path*",
     // "/jobs/:path*",
+
+
     // add other protected routes here
   ]
 }

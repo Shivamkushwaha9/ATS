@@ -13,7 +13,7 @@ const Intro = () => {
                     Overcoming the limitations of traditional ATS softwares.
                 </h1>
                 <p className=" text-center w-[80vw] lg:w-[60vw] lg:text-xl font-semibold">Ecosystem of interconnected tooling and infra api systems that are fast, secure and scalable across many Jobs.</p>
-                <a className="flex flex-row items-center justify-center gap-3 bg-[#6F58F1] p-2 rounded-md mt-5 text-white transition-all duration-300 ease-in-out transform hover:scale-110 shadow-md border-transparent hover:border-[#5340ff] hover:shadow-[0_0_15px_5px_rgba(83,64,255,0.6)]" href='#features'>
+                <a className="flex flex-row items-center justify-center gap-3 bg-[#39D353] p-2 rounded-md mt-5 text-white transition-all duration-300 ease-in-out transform hover:scale-110 shadow-md border-transparent hover:border-[#39D353] hover:shadow-[0_0_15px_5px_rgba(83,64,255,0.6)]" href='#features'>
                     <p>Get started </p>
                     <FaChevronRight />
                 </a>

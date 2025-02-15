@@ -78,11 +78,15 @@ const Page = () => {
    return (
       <div className='mt-[72px]'>
          <div className="relative w-full h-[250px] md:h-[300px]">
-            <img
-               className='h-full w-full object-cover bg-[#DBEAFE]'
-               src='/images/resumecoverimgmob.png'
-               alt="Resume cover"
-            />
+            <div className='absolute inset-0'>
+               <img
+                  className='h-full w-full object-cover bg-[#3da0af]'
+                  src='/images/resumecoverimgmob.png'
+                  alt="Resume cover"
+               />
+               Change
+               <div className='absolute inset-0 bg-[#2460E8]/40'></div>
+            </div>
             <div className='absolute inset-0 p-4 md:p-10 bg-black bg-opacity-30'>
                <h1 className='text-white font-semibold text-xl md:text-3xl'>
                   Resume Templates
@@ -166,8 +170,8 @@ const Page = () => {
                         onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
                         className={`px-4 py-2 rounded-lg ${currentPage === 1
-                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                              : 'bg-blue-500 text-white hover:bg-blue-600'
+                           ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                           : 'bg-blue-500 text-white hover:bg-blue-600'
                            }`}
                      >
                         Previous
@@ -178,8 +182,8 @@ const Page = () => {
                            key={i}
                            onClick={() => setCurrentPage(i + 1)}
                            className={`w-10 h-10 rounded-lg ${currentPage === i + 1
-                                 ? 'bg-blue-500 text-white'
-                                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                              ? 'bg-blue-500 text-white'
+                              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                               }`}
                         >
                            {i + 1}
@@ -190,8 +194,8 @@ const Page = () => {
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                         disabled={currentPage === totalPages}
                         className={`px-4 py-2 rounded-lg ${currentPage === totalPages
-                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                              : 'bg-blue-500 text-white hover:bg-blue-600'
+                           ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                           : 'bg-blue-500 text-white hover:bg-blue-600'
                            }`}
                      >
                         Next

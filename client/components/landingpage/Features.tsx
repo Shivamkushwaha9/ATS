@@ -5,7 +5,7 @@ const Features = () => {
     <div className="relative w-full min-h-screen overflow-hidden" id="features">
       {/* Background Image */}
       <img
-        className="w-full h-full object-cover lg:object-contain absolute inset-0 z-0 bg-black"
+        className="w-full h-full object-cover lg:object-contain absolute inset-0 z-0 bg-white"
         src="/images/bg.png"
         alt="Background"
       />
