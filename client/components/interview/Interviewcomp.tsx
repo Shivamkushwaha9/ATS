@@ -84,14 +84,30 @@ export const InterviewCard = () => (
 
 export const InterviewResumeUploader = () => {
     const [selectedFile, setSelectedFile] = useState(null);
+    const [processedStrings, setProcessedStrings] = useState([]);
     const fileInputRef = useRef(null);
 
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
         if (file) {
             // Check if file is PDF
             if (file.type === 'application/pdf') {
                 setSelectedFile(file);
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await response.json();
+                    setProcessedStrings(result.strings);
+                    
+                } catch (error) {
+                    console.error('Upload failed:', error);
+                }
+
             } else {
                 alert('Please upload a PDF file only');
                 event.target.value = null;
@@ -107,7 +123,7 @@ export const InterviewResumeUploader = () => {
     const handleDrop = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        
+
         const file = event.dataTransfer.files[0];
         if (file.type === 'application/pdf') {
             setSelectedFile(file);
@@ -125,10 +141,10 @@ export const InterviewResumeUploader = () => {
             {/* Header Section */}
             <div className="mb-8 lg:mb-12">
                 <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent mb-4">
-                   1. Upload Your Professional Resume
+                    1. Upload Your Professional Resume
                 </h1>
                 <p className="text-gray-600 text-base sm:text-lg">
-                    Showcase your skills and experience by uploading your resume. 
+                    Showcase your skills and experience by uploading your resume.
                     We support PDF format to maintain your document's formatting.
                 </p>
             </div>
@@ -137,7 +153,7 @@ export const InterviewResumeUploader = () => {
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
                 {/* Upload Section */}
                 <div className="w-full lg:flex-1">
-                    <div 
+                    <div
                         onClick={handleAreaClick}
                         onDragOver={handleDragOver}
                         onDrop={handleDrop}
@@ -146,14 +162,14 @@ export const InterviewResumeUploader = () => {
                             cursor-pointer"
                     >
                         <div className="flex flex-col items-center justify-center gap-4 sm:gap-6">
-                            <img 
-                                src="/images/resumeuploader.png" 
-                                alt="Resume Upload" 
+                            <img
+                                src="/images/resumeuploader.png"
+                                alt="Resume Upload"
                                 className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                             />
                             <div className="text-center">
                                 <p className="text-lg sm:text-xl font-semibold text-gray-700 mb-2">
-                                    {selectedFile 
+                                    {selectedFile
                                         ? `Selected: ${selectedFile.name}`
                                         : 'Drag & Drop your resume here'
                                     }
@@ -168,7 +184,7 @@ export const InterviewResumeUploader = () => {
                                     accept=".pdf"
                                     className="hidden"
                                 />
-                                <button 
+                                <button
                                     className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-600 text-white 
                                         rounded-lg hover:bg-blue-700 transition-colors 
                                         text-base sm:text-lg font-medium shadow-lg 
@@ -195,7 +211,7 @@ export const InterviewResumeUploader = () => {
                 </div>
             </div>
             <p className='text-center mt-8'>
-            Hello there
+                Hello there
             </p>
         </div>
     )
@@ -217,7 +233,7 @@ export const JobDescriptionInput = () => {
                     2. Paste Job Description
                 </h1>
                 <p className="text-gray-600 text-lg max-w-2xl">
-                    Paste your job description below and let our AI analyze the key requirements, 
+                    Paste your job description below and let our AI analyze the key requirements,
                     skills, and qualifications needed for the role.
                 </p>
             </div>
@@ -241,7 +257,7 @@ export const JobDescriptionInput = () => {
                             {jobDescription.length} characters
                         </div>
                     </div>
-                    
+
                     {/* Action Buttons */}
                     <div className="mt-4 flex gap-4">
                         <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 
@@ -250,7 +266,7 @@ export const JobDescriptionInput = () => {
                             font-medium">
                             Submit Description
                         </button>
-                        <button 
+                        <button
                             onClick={() => setJobDescription('')}
                             className="px-6 py-3 border-2 border-blue-200 text-blue-600
                                 rounded-lg hover:bg-blue-50 transition-all duration-300
@@ -264,9 +280,9 @@ export const JobDescriptionInput = () => {
                 <div className="hidden lg:block lg:w-1/3 sticky top-8">
                     <div className="relative h-[500px] w-full rounded-xl overflow-hidden
                         shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
-                        <img 
-                            src="/images/jobdescription.png" 
-                            alt="Job Description Analysis" 
+                        <img
+                            src="/images/jobdescription.png"
+                            alt="Job Description Analysis"
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent" />

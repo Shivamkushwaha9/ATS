@@ -1,6 +1,6 @@
 const PricingCard = () => {
     return (
-        <div className='relative w-full h-full'>
+        <div className='relative w-full h-full overflow-x-hidden'>
             <img className='w-full h-full object-cover' src='/images/background.png' />
             <div className='absolute inset-0'>
                 <h1 className='text-center text-3xl lg:text-4xl font-bold pt-10'>

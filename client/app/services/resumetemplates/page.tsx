@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client';
 
 import Footer from '@/components/landingpage/Footer';
@@ -85,7 +86,7 @@ const Page = () => {
                   alt="Resume cover"
                />
                Change
-               <div className='absolute inset-0 bg-[#2460E8]/40'></div>
+               <div className='absolute inset-0 bg-[#1c64ff]/60'></div>
             </div>
             <div className='absolute inset-0 p-4 md:p-10 bg-black bg-opacity-30'>
                <h1 className='text-white font-semibold text-xl md:text-3xl'>

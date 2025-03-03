@@ -21,7 +21,7 @@ const Faqs = () => {
     };
 
     return (
-        <div className='flex flex-col bg-gradient-to-b from-[#05356A] to-[#1b1f32] items-center justify-center'>
+        <div className='flex flex-col bg-gradient-to-b from-[#05356A] to-[#1b1f32] items-center justify-center overflow-x-hidden'>
             <h1 className='text-center text-4xl lg:text-6xl my-10 font-bold'>
                 Frequently Asked Questions
             </h1>

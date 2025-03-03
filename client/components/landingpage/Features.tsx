@@ -2,7 +2,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden" id="features">
+    <div className="relative w-full min-h-screen overflow-x-hidden" id="features">
       {/* Background Image */}
       <img
         className="w-full h-full object-cover lg:object-contain absolute inset-0 z-0 bg-black"

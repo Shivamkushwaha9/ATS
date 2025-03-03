@@ -33,7 +33,7 @@ const MovingGrid = () => {
     }, []);
 
     return (
-        <div className="w-full overflow-hidden py-4 md:py-8 text-white bg-[#000]">
+        <div className="w-full overflow-x-hidden py-4 md:py-8 text-white bg-[#000]">
             <h1 className="lg:text-4xl text-2xl font-semibold flex items-center justify-center lg:pt-7 pt-2">
                 Get interview ready across&nbsp;
             </h1>

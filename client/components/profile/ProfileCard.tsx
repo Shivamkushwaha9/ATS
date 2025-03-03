@@ -8,7 +8,7 @@ const ProfileCard = () => {
   return (
     <div>
         {/* Actual Profile */}
-        <div className='mx-auto my-12 w-[90vw] border rounded-lg bg-white flex flex-row'>
+        <div className='mx-auto my-12 w-[90vw] border rounded-2xl bg-white flex flex-row'>
             <div className='w-[20%] ml-10 flex items-center justify-center  my-4        '>
                <img className='h-44 w-44 p-4' src='/images/bg.png' />
             </div>
@@ -65,7 +65,7 @@ const ProfileCard = () => {
 
                {/* Content Container */}
                <div className='relative z-10 h-full flex flex-col justify-center items-center text-white p-6 text-center'>
-                  <h2 className='text-3xl font-bold mb-3 '>
+                  <h2 className='text-3xl font-bold mb-3 text-blue-500'>
                      Global Rankings
                   </h2>
 

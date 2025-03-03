@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className='bg-[#090909] flex flex-col pt-32 w-screen'>
-            <div className='flex flex-row'>
+        <footer className='bg-[#090909] flex flex-col pt-32 w-full overflow-hidden'>
+            <div className='flex flex-row overflow-hidden'>
 
                 <div className='flex flex-row w-[30%] gap-5 items-center justify-center'>
                     <img className='h-10 w-10' src='/images/logo.png' />

@@ -7,8 +7,6 @@ import {
     TimelineDemo
 } from '@/components/interview/Interviewcomp'
 import { GithubRepoSelector } from '@/components/interview/Github'
-// import { GitHubRepoSelector } from '@/components/interview/Github'
-// import { TimelineDemo } from '@/components/interview/TimelineComp'
 
 const Interview = () => {
     return (

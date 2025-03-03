@@ -12,7 +12,7 @@ const Products = () => {
     const { ref: block3Ref, isInView: block3InView } = useInView()
 
     return (
-        <div className="min-h-screen bg-gradient-to-b to-[#000000] from-[#000000] via-[#05356B] flex flex-col items-center justify-center text-white p-8">
+        <div className="min-h-screen bg-gradient-to-b to-[#000000] from-[#000000] via-[#05356B] flex flex-col items-center justify-center text-white p-8 overflow-x-hidden">
             {/* Header */}
             <h1
                 ref={headerRef}
